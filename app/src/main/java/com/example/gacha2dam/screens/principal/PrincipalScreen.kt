@@ -230,7 +230,7 @@ fun PrincipalScreen(navController: NavController, viewModel: LoginScreenViewMode
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp)
                 .clip(RoundedCornerShape(50))  // Borde más suave
-                .shadow(8.dp, RoundedCornerShape(50)), // Sombra suave
+                .shadow(8.dp, RoundedCornerShape(50)),
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.primary, // Color de fondo del botón
                 contentColor = MaterialTheme.colorScheme.onPrimary // Color del texto dentro del botón
