@@ -32,16 +32,40 @@ class LoginScreenViewModel : ViewModel() {
                 auth.signInWithCredential(credential)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            onResult(true, null)
+                            val userId = auth.currentUser?.uid ?: ""
+                            val displayName = auth.currentUser?.displayName ?: ""
+
+                            // Verificar si el usuario ya existe en Firestore
+                            val db = FirebaseFirestore.getInstance()
+                            db.collection("users").document(userId).get()
+                                .addOnSuccessListener { document ->
+                                    if (document.exists()) {
+                                        // Usuario ya existe, continuar con el inicio de sesión
+                                        onResult(true, null)
+                                    } else {
+                                        // Usuario no existe, crear en Firestore
+                                        createUserInFirestore(userId, displayName) { success, error ->
+                                            if (success) {
+                                                onResult(true, null) // Usuario creado y logeado
+                                            } else {
+                                                onResult(false, error) // Error al crear usuario
+                                            }
+                                        }
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    onResult(false, exception.message ?: "Error al verificar usuario")
+                                }
                         } else {
                             onResult(false, task.exception?.message ?: "Error desconocido")
                         }
                     }
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 onResult(false, e.message ?: "Error desconocido")
             }
         }
     }
+
 
     fun register(username: String, email: String, password: String, callback: (Boolean, String?) -> Unit) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
@@ -85,7 +109,6 @@ class LoginScreenViewModel : ViewModel() {
             .addOnFailureListener { exception ->
                 callback(false, exception.message) // Error
             }
-    }
         }
-
+    }
 }
