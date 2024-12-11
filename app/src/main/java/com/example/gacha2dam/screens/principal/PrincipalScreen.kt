@@ -54,7 +54,7 @@ fun PrincipalScreen(navController: NavController, viewModel: LoginScreenViewMode
     val auth = FirebaseAuth.getInstance()
     val db = FirebaseFirestore.getInstance()
 
-    // Estado para el nombre de usuario
+    // Estados para el usuario
     val userName = remember { mutableStateOf("Cargando...") }
     val userProgress = remember { mutableStateOf(0f) }
 
@@ -127,7 +127,7 @@ fun PrincipalScreen(navController: NavController, viewModel: LoginScreenViewMode
             )
         }
 
-        // Texto clickeable para ir al perfil en la esquina superior izquierda
+        // Texto clicable para ir al perfil en la esquina superior izquierda
         Text(
             text = "Perfil",
             style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold), // Aumenta la legibilidad
@@ -135,7 +135,7 @@ fun PrincipalScreen(navController: NavController, viewModel: LoginScreenViewMode
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .clickable {
-                    // Navegar a la pantalla de perfil o mostrar un pequeño recuadro con los datos
+                    // Navegar a la pantalla de perfil o mostrar un pequeño recuadro con los datos (no implementado)
                 }
                 .padding(8.dp) // Agrega espacio alrededor del texto para mejorar la interacción
                 .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.8f), RoundedCornerShape(4.dp)) // Fondo suave para mejor visibilidad
@@ -170,8 +170,8 @@ fun PrincipalScreen(navController: NavController, viewModel: LoginScreenViewMode
                 strokeWidth = 8.dp,
                 modifier = Modifier
                     .size(150.dp)
-                    .shadow(8.dp, shape = CircleShape)  // Sombra
-                    .background(MaterialTheme.colorScheme.surface, CircleShape) // Fondo del círculo
+                    .shadow(8.dp, shape = CircleShape)
+                    .background(MaterialTheme.colorScheme.surface, CircleShape)
             )
             Text(
                 text = "${(userProgress.value * 100).toInt()}%",
@@ -229,16 +229,16 @@ fun PrincipalScreen(navController: NavController, viewModel: LoginScreenViewMode
                 .offset(y = 130.dp)
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp)
-                .clip(RoundedCornerShape(50))  // Borde más suave
+                .clip(RoundedCornerShape(50))
                 .shadow(8.dp, RoundedCornerShape(50)),
             colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary, // Color de fondo del botón
-                contentColor = MaterialTheme.colorScheme.onPrimary // Color del texto dentro del botón
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
             )
         ) {
             Text(
                 text = "Obtener compañeros",
-                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold) // Estilo de texto
+                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
             )
         }
         // Pop-up para mostrar el personaje obtenido
@@ -282,14 +282,14 @@ fun PrincipalScreen(navController: NavController, viewModel: LoginScreenViewMode
                     Text(
                         text = "¡Personaje Obtenido!",
                         style = MaterialTheme.typography.headlineSmall,
-                        textAlign = TextAlign.Center, // Centrado del título
+                        textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
                 },
                 text = {
                     personajeObtenido.value?.let { personaje ->
                         Column(
-                            horizontalAlignment = Alignment.CenterHorizontally, // Centrar contenido
+                            horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center,
                             modifier = Modifier.fillMaxWidth()
                         ) {
@@ -312,18 +312,17 @@ fun PrincipalScreen(navController: NavController, viewModel: LoginScreenViewMode
                                 contentDescription = personaje.nombrePJ,
                                 modifier = Modifier
                                     .size(150.dp)
-                                    .graphicsLayer { // Animación al mostrar la imagen
+                                    // Animación al mostrar la imagen
+                                    .graphicsLayer {
                                         alpha = 1f
                                         scaleX = 1.2f
                                         scaleY = 1.2f
                                     }
-                                    .clip(RoundedCornerShape(8.dp)), // Bordes redondeados para la imagen
+                                    .clip(RoundedCornerShape(8.dp)),
                                 contentScale = ContentScale.Crop
                             )
-
                             // Espaciado entre la imagen y el texto
                             Spacer(modifier = Modifier.height(16.dp))
-
                             // Rareza del personaje
                             Text(
                                 text = "Rareza: ${personaje.rareza}",

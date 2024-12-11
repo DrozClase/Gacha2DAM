@@ -78,7 +78,7 @@ fun LoginScreen(
                 }
         }
 
-        // Fondo gradiente
+        // Fondo
         Box(
                 modifier = Modifier
                         .fillMaxSize()
