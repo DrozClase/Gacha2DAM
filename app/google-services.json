@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "197002281160",
+    "project_id": "gacha2dam",
+    "storage_bucket": "gacha2dam.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197002281160:android:47dad1f5b13a9a478ca5fd",
+        "android_client_info": {
+          "package_name": "com.example.gacha2dam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197002281160-tcso412daqsf4tbik0vb0to3nbjsmfk6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gacha2dam",
+            "certificate_hash": "ee0c87d81eb0d6fca3cf3acbaaeba19b7b3f78bb"
+          }
+        },
+        {
+          "client_id": "197002281160-a8hlpqqedtlr2lffed3ie9ismsh5k2op.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5th7LtX1Pw9TpVnajTHoHXyHZTAGdwxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197002281160-a8hlpqqedtlr2lffed3ie9ismsh5k2op.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
