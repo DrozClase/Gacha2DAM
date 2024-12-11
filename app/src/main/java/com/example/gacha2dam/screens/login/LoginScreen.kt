@@ -103,7 +103,7 @@ fun LoginScreen(
                                 text = "Bienvenido a Gacha2DAM",
                                 style = MaterialTheme.typography.headlineLarge.copy(
                                         fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.onPrimary
+                                        color = MaterialTheme.colorScheme.onSurface
                                 ),
                                 textAlign = TextAlign.Center
                         )
@@ -111,7 +111,7 @@ fun LoginScreen(
                         Text(
                                 text = "Inicia sesión para continuar",
                                 style = MaterialTheme.typography.bodyMedium.copy(
-                                        color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f)
+                                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
                                 ),
                                 textAlign = TextAlign.Center
                         )
