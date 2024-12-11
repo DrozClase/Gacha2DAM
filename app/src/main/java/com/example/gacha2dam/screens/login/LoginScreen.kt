@@ -49,6 +49,7 @@ fun LoginScreen(
         navController: NavController,
         viewModel: LoginScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
+
         // Estados para los campos de texto
         var email by rememberSaveable { mutableStateOf("") }
         var password by rememberSaveable { mutableStateOf("") }
